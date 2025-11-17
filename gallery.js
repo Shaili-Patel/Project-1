@@ -7,9 +7,9 @@ let mTimer = null
 $(document).ready(() => {
   $('.details').hide() // Hide details initially
 
-  startTimer() // start the timer for the slideshow
+  // Remove startTimer() from here!
 
-  // Nore indicator click
+  // More indicator click
   $('#moreIndicator').click(function () {
     $(this).toggleClass('rot90 rot270')
     $('.details').slideToggle()
@@ -35,48 +35,17 @@ function fetchJSON () {
     url: mUrl,
     dataType: 'json',
     success: function (data) {
-      data.images.forEach(img => {
-        mImages.push(img)
-      })
+      data.images.forEach(img => mImages.push(img))
+
+      // Display first image
       swapPhoto()
+
+      // Now start the timer after images are loaded
+      startTimer()
     }
   })
 }
 
-// Functin to swap and display the next photo in the slideshow
-function swapPhoto () {
-  const img = mImages[mCurrentIndex]
-  $('#photo').attr('src', img.imgPath)
-  $('.location').text(img.imgLocation)
-  $('.description').text(img.description)
-  $('.date').text(img.date)
-}
-
-// Advances to the next photo, loops to the first photo if the end of array is reached
-function showNextPhoto () {
-  mCurrentIndex++
-  if (mCurrentIndex >= mImages.length) {
-    mCurrentIndex = 0
-  }
-  swapPhoto()
-}
-
-// Goes to the previous photo, and loopss to the last photo
-function showPrevPhoto () {
-  mCurrentIndex--
-  if (mCurrentIndex < 0) {
-    mCurrentIndex = mImages.length - 1
-  }
-  swapPhoto()
-}
-
-// Starter code for the timer function
-function startTimer () {
-  if (mTimer) clearInterval(mTimer)
-  mTimer = setInterval(() => {
-    showNextPhoto()
-  }, mWaitTime)
-}
 
 
 
