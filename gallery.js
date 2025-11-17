@@ -1,35 +1,35 @@
 let mCurrentIndex = 0 // Tracks the current image index
 let mImages = [] // Array to hold GalleryImage objects
-const mUrl = 'https://images-json-url.com' 
+const mUrl = 'https://images-json-url.com'
 const mWaitTime = 5000 // Timer interval in milliseconds
 let mTimer = null
 
 $(document).ready(() => {
   $('.details').hide() // Hide details initially
 
-  // Remove startTimer() from here!
-
-  // More indicator click
+  // Toggle details panel
   $('#moreIndicator').click(function () {
     $(this).toggleClass('rot90 rot270')
     $('.details').slideToggle()
   })
 
-  // Next Photo button
+  // Next button
   $('#nextPhoto').click(() => {
     showNextPhoto()
   })
 
-  // Back Photo button
+  // Previous button
   $('#prevPhoto').click(() => {
     showPrevPhoto()
   })
 
-  // Load the scenery images
+  // Load the images data
   fetchJSON()
 })
 
-// Function to fetch JSON data and store it in mImages
+/* ------------------------------------------------------
+   FETCH JSON
+------------------------------------------------------ */
 function fetchJSON () {
   $.ajax({
     url: mUrl,
@@ -40,10 +40,52 @@ function fetchJSON () {
       // Display first image
       swapPhoto()
 
-      // Now start the timer after images are loaded
+      // Start slideshow timer AFTER loading images
       startTimer()
     }
   })
+}
+
+/* ------------------------------------------------------
+   UPDATE IMAGE + METADATA
+------------------------------------------------------ */
+function swapPhoto () {
+  const img = mImages[mCurrentIndex]
+
+  $('#photo').attr('src', img.imgPath)
+  $('.location').text(img.imgLocation)
+  $('.description').text(img.description)
+  $('.date').text(img.date)
+}
+
+/* ------------------------------------------------------
+   NEXT / PREVIOUS
+------------------------------------------------------ */
+function showNextPhoto () {
+  mCurrentIndex++
+  if (mCurrentIndex >= mImages.length) {
+    mCurrentIndex = 0
+  }
+  swapPhoto()
+}
+
+function showPrevPhoto () {
+  mCurrentIndex--
+  if (mCurrentIndex < 0) {
+    mCurrentIndex = mImages.length - 1
+  }
+  swapPhoto()
+}
+
+/* ------------------------------------------------------
+   SLIDESHOW TIMER
+------------------------------------------------------ */
+function startTimer () {
+  if (mTimer) clearInterval(mTimer)
+
+  mTimer = setInterval(() => {
+    showNextPhoto()
+  }, mWaitTime)
 }
 
 
