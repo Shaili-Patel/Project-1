@@ -89,5 +89,16 @@ function startTimer () {
 }
 
 
+// Timer
+function startTimer() {
+  if (mTimer) clearInterval(mTimer)  // Clear existing timer if running
+
+  mTimer = setInterval(() => {
+    showNextPhoto()  // Advance to the next image
+  }, 5000) // 5 seconds
+}
+
+
+
 
 
