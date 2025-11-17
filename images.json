@@ -1,82 +1,82 @@
 {
-    "images": [
-        {
-            "imgPath": "img/places/antelope-canyon.jpg",
-            "imgLocation": "Arizona",
-            "description": "Antelope Canyon",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/kawachi-wisteria-garden.webp",
-            "imgLocation": "Japan",
-            "description": "Kawachi Wisteria Garden",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/mosquito-bay.jpg",
-            "imgLocation": "Puerto Rico",
-            "description": "Mosquito Bay",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/uyuni-salt-flat.jpg",
-            "imgLocation": "Bolivia",
-            "description": "Uyuni Salt Flat",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/waitomo-caves.jpg",
-            "imgLocation": "New Zealand",
-            "description": "Waitomo Caves",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/palawan.webp",
-            "imgLocation": "Philippines",
-            "description": "Palawan",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/amalfi-coast.webp",
-            "imgLocation": "Italy",
-            "description": "Amalfi Coast",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/northern-lights.jpg",
-            "imgLocation": "Alaska",
-            "description": "Northern Lights",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/lakes.jpg",
-            "imgLocation": "Plitvice Lakes",
-            "description": "Croatia",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/great-barrier-reef.jpg",
-            "imgLocation": "Australia",
-            "description": "Great Barrier Reef",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/moraine-lake.jpg",
-            "imgLocation": "Canada",
-            "description": "Moraine Lake",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/rainbow-mountains.webp",
-            "imgLocation": "China",
-            "description": "Rainbow Mountains",
-            "date": ""
-        },
-        {
-            "imgPath": "img/places/monasteries.jpg",
-            "imgLocation": "Greece",
-            "description": "Meteora Monasteries",
-            "date": ""
-        }
+  "images": [
+    {
+      "imgPath": "img/places/antelope-canyon.jpg",
+      "imgLocation": "Arizona",
+      "description": "Antelope Canyon",
+      "about": "Famous red rock canyon"
+    },
+    {
+      "imgPath": "img/places/kawachi-wisteria-garden.webp",
+      "imgLocation": "Japan",
+      "description": "Kawachi Wisteria Garden",
+      "about": "Stunning flowering wisteria"
+    },
+    {
+      "imgPath": "img/places/mosquito-bay.webp",
+      "imgLocation": "Puerto Rico",
+      "description": "Mosquito Bay",
+      "about": "Bioluminescent water magic"
+    },
+    {
+      "imgPath": "img/places/uyuni-salt-flat.jpg",
+      "imgLocation": "Bolivia",
+      "description": "Uyuni Salt Flat",
+      "about": "Vast mirror-like salt"
+    },
+    {
+      "imgPath": "img/places/waitomo-caves.jpg",
+      "imgLocation": "New Zealand",
+      "description": "Waitomo Caves",
+      "about": "Glowing underground caves"
+    },
+    {
+      "imgPath": "img/places/palawan.webp",
+      "imgLocation": "Philippines",
+      "description": "Palawan",
+      "about": "Tropical paradise islands"
+    },
+    {
+      "imgPath": "img/places/amalfi-coast.webp",
+      "imgLocation": "Italy",
+      "description": "Amalfi Coast",
+      "about": "Scenic Mediterranean cliffs"
+    },
+    {
+      "imgPath": "img/places/northern-lights.jpg",
+      "imgLocation": "Alaska",
+      "description": "Northern Lights",
+      "about": "Colorful night sky display"
+    },
+    {
+      "imgPath": "img/places/lakes.jpg",
+      "imgLocation": "Plitvice Lakes",
+      "description": "Croatia",
+      "about": "Turquoise cascading lakes"
+    },
+    {
+      "imgPath": "img/places/great-barrier-reef.jpg",
+      "imgLocation": "Australia",
+      "description": "Great Barrier Reef",
+      "about": "Largest coral reef system"
+    },
+    {
+      "imgPath": "img/places/moraine-lake.jpg",
+      "imgLocation": "Canada",
+      "description": "Moraine Lake",
+      "about": "Turquoise glacial lake"
+    },
+    {
+      "imgPath": "img/places/rainbow-mountains.webp",
+      "imgLocation": "China",
+      "description": "Rainbow Mountains",
+      "about": "Colorful mineral hills"
+    },
+    {
+      "imgPath": "img/places/monasteries.jpg",
+      "imgLocation": "Greece",
+      "description": "Meteora Monasteries",
+      "about": "Clifftop ancient monasteries"
+    }
   ]
 }

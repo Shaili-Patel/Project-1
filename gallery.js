@@ -1,104 +1,96 @@
-let mCurrentIndex = 0 // Tracks the current image index
-let mImages = [] // Array to hold GalleryImage objects
-const mUrl = 'https://images-json-url.com'
-const mWaitTime = 5000 // Timer interval in milliseconds
-let mTimer = null
+let mCurrentIndex = 0;
+let mImages = [];
+const mUrl = 'images.json';
+const mWaitTime = 5000;
+let mTimer = null;
 
 $(document).ready(() => {
-  $('.details').hide() // Hide details initially
+  // Hide details initially
+  $('.details').hide();
 
-  // Toggle details panel
-  $('#moreIndicator').click(function () {
-    $(this).toggleClass('rot90 rot270')
-    $('.details').slideToggle()
-  })
+  // Toggle details on click
+  $('.moreIndicator').click(function () {
+    $(this).toggleClass('rot90 rot270');
+    $('.details').slideToggle();
+  });
 
-  // Next button
+  // Next/Prev buttons
   $('#nextPhoto').click(() => {
-    showNextPhoto()
-  })
-
-  // Previous button
+    showNextPhoto();
+    resetTimer(); // reset timer when user manually navigates
+  });
   $('#prevPhoto').click(() => {
-    showPrevPhoto()
-  })
+    showPrevPhoto();
+    resetTimer();
+  });
 
-  // Load the images data
-  fetchJSON()
-})
+  // Load JSON
+  fetchJSON();
+});
 
-/* ------------------------------------------------------
-   FETCH JSON
------------------------------------------------------- */
-function fetchJSON () {
+/* ------------------------------
+   Load JSON
+------------------------------ */
+function fetchJSON() {
   $.ajax({
     url: mUrl,
     dataType: 'json',
     success: function (data) {
-      data.images.forEach(img => mImages.push(img))
+      mImages = data.images;
 
-      // Display first image
-      swapPhoto()
-
-      // Start slideshow timer AFTER loading images
-      startTimer()
+      if (mImages.length > 0) {
+        swapPhoto();  // Show first image
+        startTimer(); // Start slideshow timer
+      }
+    },
+    error: function () {
+      console.error('Failed to load JSON.');
     }
-  })
+  });
 }
 
-/* ------------------------------------------------------
-   UPDATE IMAGE + METADATA
------------------------------------------------------- */
-function swapPhoto () {
-  const img = mImages[mCurrentIndex]
+/* ------------------------------
+   Swap Photo & Update Details
+------------------------------ */
+function swapPhoto() {
+  const img = mImages[mCurrentIndex];
+  if (!img) return;
 
-  $('#photo').attr('src', img.imgPath)
-  $('.location').text(img.imgLocation)
-  $('.description').text(img.description)
-  $('.date').text(img.date)
-}
-
-/* ------------------------------------------------------
-   NEXT / PREVIOUS
------------------------------------------------------- */
-function showNextPhoto () {
-  mCurrentIndex++
-  if (mCurrentIndex >= mImages.length) {
-    mCurrentIndex = 0
-  }
-  swapPhoto()
-}
-
-function showPrevPhoto () {
-  mCurrentIndex--
-  if (mCurrentIndex < 0) {
-    mCurrentIndex = mImages.length - 1
-  }
-  swapPhoto()
-}
-
-/* ------------------------------------------------------
-   SLIDESHOW TIMER
------------------------------------------------------- */
-function startTimer () {
-  if (mTimer) clearInterval(mTimer)
-
-  mTimer = setInterval(() => {
-    showNextPhoto()
-  }, mWaitTime)
+  $('#photo').attr('src', img.imgPath);
+  $('.location').text("Location: " + img.imgLocation);
+  $('.description').text("Description: " + img.description);
+  $('.about').text("About: " + img.about); // updated line
 }
 
 
-// Timer
+/* ------------------------------
+   Navigation
+------------------------------ */
+function showNextPhoto() {
+  mCurrentIndex = (mCurrentIndex + 1) % mImages.length;
+  swapPhoto();
+}
+
+function showPrevPhoto() {
+  mCurrentIndex = (mCurrentIndex - 1 + mImages.length) % mImages.length;
+  swapPhoto();
+}
+
+/* ------------------------------
+   Timer
+------------------------------ */
 function startTimer() {
-  if (mTimer) clearInterval(mTimer)  // Clear existing timer if running
+  if (mTimer) clearInterval(mTimer);
 
   mTimer = setInterval(() => {
-    showNextPhoto()  // Advance to the next image
-  }, 5000) // 5 seconds
+    showNextPhoto();
+  }, mWaitTime);
 }
 
-
-
+// Reset timer when user manually navigates
+function resetTimer() {
+  clearInterval(mTimer);
+  startTimer();
+}
 
 
